@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+DOCKERFILE=Dockerfile
+TAG=latest
+
+echo "Building $DOCKERFILE"
+docker build --no-cache -t juliusworks/envsubst:$TAG -f $DOCKERFILE .
+
+echo "Pushing $DOCKERFILE"
+docker push juliusworks/envsubst:$TAG
